@@ -1,0 +1,25 @@
+Front-end-user
+-------------------------
+1- En la carpeta Front-End-user ejecutar npm install
+2- ejecutar npm run serve
+====================================================
+Back-End-user
+-------------------------
+Strapi
+Para acceder:
+email: user@api.com
+contraseña: 123456
+roll: Authenticated
+--------------------------
+TABLAS
+--------------------------
+Tabla: Usuariosaleatoreos
+Columnas: Pais, tipo texto
+	  Nombre, tipo texto
+	  Apellido, tipo texto
+	  Sexo, tipo texto
+	  Email, tipo email
+--------------------------
+Tabla: Pais
+Columna: Pais, tipo texto
+--------------------------	

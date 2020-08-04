@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/usuariosaleatoreos",
+      "handler": "usuariosaleatoreos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usuariosaleatoreos/count",
+      "handler": "usuariosaleatoreos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usuariosaleatoreos/:id",
+      "handler": "usuariosaleatoreos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/usuariosaleatoreos",
+      "handler": "usuariosaleatoreos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/usuariosaleatoreos/:id",
+      "handler": "usuariosaleatoreos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/usuariosaleatoreos/:id",
+      "handler": "usuariosaleatoreos.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "usuariosaleatoreos",
+  "info": {
+    "name": "usuariosaleatoreos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "sexo": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "pais": {
+      "type": "string"
+    },
+    "edad": {
+      "type": "integer"
+    },
+    "apellido": {
+      "type": "string"
+    }
+  }
+}
