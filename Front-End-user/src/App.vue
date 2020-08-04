@@ -9,19 +9,19 @@
             {{ loading.titulo }}
             <v-progress-linear
               indeterminate
-              color="white"
+              color="green"
               class="mb-0"
             ></v-progress-linear>
           </v-card-text>
         </v-card>
       </v-dialog>
 
-      <v-dialog persistent v-model="authenticated.popup" width="500">
+      <v-dialog persistent v-model="authenticated.popup" width="400">
         <v-card>
-          <v-card-title>Atencion!</v-card-title>
+          <!-- <v-card-title>Atencion!</v-card-title> -->
           <v-divider></v-divider>
-          <v-card-text class="px-4 pt-4 pb-3">
-            <h3>Debe ingresar a la BD Strapi</h3>
+          <v-card-text class="px-7 pt-7 pb-7">
+            <h3>POR FAVOR, INGRESAR A STRAPI</h3>
           </v-card-text>
 
           <v-divider></v-divider>
