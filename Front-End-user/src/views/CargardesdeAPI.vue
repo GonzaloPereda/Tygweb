@@ -1,16 +1,16 @@
 <template>
   <v-container>
-    <Toolbarprop titulo="Actualizar Estadisticas desde la API a Strapi" />
+    <Toolbarprop titulo="Actualizar desde la API a Strapi" />
     <v-card class="mx-auto mt-6">
       <v-container fluid>
         <v-row dense>
-          <v-col cols="12" md="50">
+          <v-col cols="12" md="12">
             <v-card>
               <v-img
-                src="../assets/datos.png"
-                class="white--text align-end"
+                src="../assets/cerveza.jpg"
+                class="black--text align-end"
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                height="200px">
+                height="300px">
                 <!-- <v-card-title
                   ></v-card-title
                 > -->
@@ -19,7 +19,7 @@
                 <v-spacer></v-spacer>
                 <v-container fluid>
                   <v-row align="center">
-                    <v-col cols="10" md="4">
+                    <v-col cols="12" md="12">
                       <!-- <v-select
                         v-model="selected"
                         :items="paises"
@@ -31,10 +31,10 @@
                       ></v-select> -->
                     </v-col>
                     
-                    <v-col cols="10" md="4">
+                    <v-col cols="12" md="12">
                       <v-btn
                         block
-                        color="light-blue"
+                        color="blue"
                         @click="setusuario()"
                         >Cargar datos en strapi
                         <v-icon right dark>mdi-cloud-upload</v-icon>

@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-app-bar app>
-      <v-toolbar color="secondary" src="../assets/users.jpg" dark shaped>
+      <v-toolbar color="teal">
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-toolbar-title color="black"> 
-          <h3 color="black">Trabajo Práctico Numero 2</h3>
+        <v-toolbar-title> 
+          <h3>Pereda Gonzalo - Trabajo Practico n2</h3>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -14,23 +14,23 @@
     </v-app-bar>
     <v-navigation-drawer
       app
-      src="../assets/drawer3.jpg"
+      src="../assets/lateral.jpg"
       v-model="drawer"
       temporary
       dark
     >
       <v-layout mt-4 column align-center>
         <v-flex>
-          <v-avatar :size="130">
+          <v-avatar :size="160">
             <v-img
               @click="$router.push('/')"
-              src="../assets/logo.png"
+              src="../assets/logo2.jpeg"
             ></v-img>
           </v-avatar>
         </v-flex>
-        <v-flex>
+        <!-- <v-flex>
           <p class="white--text mt-3 headline">TP Vue-TYGWeb-2020</p>
-        </v-flex>
+        </v-flex> -->
 
         <v-divider></v-divider>
 
@@ -42,7 +42,7 @@
             :to="item.route"
           >
             <v-list-item-icon>
-              <v-icon color="black">{{ item.icon }}</v-icon>
+              <v-icon color="blue">{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
@@ -61,12 +61,12 @@ export default {
     drawer: null,
     items: [
       {
-        title: "Cargar Strapi",
+        title: "CARGAR STRAPI",
         icon: "mdi-cloud-upload",
         route: "CargardesdeAPI",
       },
       {
-        title: "mostrar graficos",
+        title: "MOSTRAS GRAFICOS",
         icon: "mdi-calendar-range-outline",
         route: "graficos",
       },

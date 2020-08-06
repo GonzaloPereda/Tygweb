@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-toolbar color="black" dark shaped>
+    <v-toolbar color="blue" dark shaped>
       <v-toolbar-title>
-        <h4>
+        <h8>
           {{ titulo }}
-        </h4>
+        </h8>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 

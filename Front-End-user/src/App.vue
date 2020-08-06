@@ -26,10 +26,10 @@
 
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn color="error" @click="authenticated.popup = false"
+            <v-btn color="red" @click="authenticated.popup = false"
               >Cerrar</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="success" @click="cerrarLog()"
+            <v-btn color="blue" @click="cerrarLog()"
               >Ingresar</v-btn>
           </v-card-actions>
         </v-card>
