@@ -2,9 +2,9 @@
   <div>
     <v-toolbar color="blue" dark shaped>
       <v-toolbar-title>
-        <h8>
+        <h4>
           {{ titulo }}
-        </h8>
+        </h4>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
