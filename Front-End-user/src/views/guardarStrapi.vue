@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <Toolbarprop titulo="Actualizar desde la API a Strapi" />
+    <Toolbarprop titulo="Actualizar" />
     <v-card class="mx-auto mt-6">
       <v-container fluid>
         <v-row dense>
@@ -12,25 +12,12 @@
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                 height="300px"
               >
-                <!-- <v-card-title
-                  ></v-card-title
-                > -->
               </v-img>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-container fluid>
                   <v-row align="center">
-                    <v-col cols="12" md="12">
-                      <!-- <v-select
-                        v-model="selected"
-                        :items="paises"
-                        menu-props="auto"
-                        label="Seleccionar"
-                        hide-details
-                        prepend-icon="mdi-map-marker"
-                        single-line
-                      ></v-select> -->
-                    </v-col>
+                    <v-col cols="12" md="12"> </v-col>
                     <v-col cols="12" md="12">
                       <v-btn block color="blue" @click="setusuario()"
                         >Cargar datos en strapi
@@ -97,7 +84,6 @@ export default {
     async logstrapi() {
       axios
         .post("http://localhost:1337/auth/local", {
-          //.post("http://192.168.56.101:1337/auth/local", {
           identifier: "api-user@example.com",
           password: "123456",
         })

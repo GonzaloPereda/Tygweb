@@ -10,7 +10,7 @@ export default new Vuex.Store({
       estado: false,
       color: "primary",
     },
-    paises:[],
+
     token1: "",
     authenticated: {
       estado: false,
@@ -18,10 +18,6 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    cargarpais(state, p)
-    {
-      state.paises.push(p);
-    },
     mostrarLoading(state, payload) {
       state.loading.titulo = payload.titulo;
       state.loading.color = payload.color;

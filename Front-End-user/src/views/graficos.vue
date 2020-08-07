@@ -1,15 +1,10 @@
 <template>
   <v-container>
-    <Toolbarprop titulo="Grafico de usuarios por pais" />
+    <Toolbarprop titulo="Personajes vivos y muertos" />
     <v-divider></v-divider>
     <v-card class="mx-auto mt-3">
       <v-row align="center" mb-1>
-        <v-col cols="12" sm="6">
-          <v-btn depressed small @click="graficos2()" color="primary"
-            >Mostrar tabla</v-btn
-          >
-           </v-col>
-        <v-col cols="12" sm="6">
+        <v-col cols="6" sm="6">
           <v-btn depressed small @click="graficos()" color="primary"
             >Mostrar estado</v-btn
           >
@@ -17,6 +12,14 @@
         <v-col v-flex full-width v-if="habilitarG" cols="12">
           <GChart
             type="DonutChart"
+            :data="chartData"
+            :options="chartOptions"
+            :resizeDebounce="500"
+          />
+        </v-col>
+        <v-col v-flex full-width v-if="habilitarG" cols="12">
+          <GChart
+            type="PieChart"
             :data="chartData"
             :options="chartOptions"
             :resizeDebounce="500"
@@ -57,13 +60,12 @@ export default {
   data() {
     return {
       habilitarG: false,
-      countr: [],
+
       datostabla: {},
       chartData: [],
       muerto: 0,
       vivo: 0,
-      dudoso: 0,
-      pais: [],
+
       chartOptions: {
         chart: {
           title: "",
@@ -71,7 +73,7 @@ export default {
         },
         height: 400,
         hAxis: {
-          title: "usuarios por pais",
+          title: "Vivos y muertos",
           titleTextStyle: { color: "green" },
         },
       },
@@ -121,40 +123,6 @@ export default {
         this.habilitarG = true;
       }
     },
-     async graficos2() { //muestra tabla
-      this.logstrapi();
-      if (1 === 2) {
-        this.authenticated.popup = true;
-      } else {
-        this.muerto = await axios.get(
-          `http://localhost:1337/personajes/count?status=Deceased`,
-          {
-            headers: {
-              Authorization: `Bearer ${this.token1}`,
-            },
-          }
-        );
-        this.vivo = await axios.get(
-          `http://localhost:1337/personajes/count?status=Alive`,
-          {
-            headers: {
-              Authorization: `Bearer ${this.token1}`,
-            },
-          }
-        );
-        var data2 = [["Estado", "Cantidad"]];
-        data2.push(["muertos", this.muerto.data]);
-        data2.push(["vivos", this.vivo.data]);
-        this.chartData = data2;
-        this.habilitarG = true;
-      }
-    },
-  },
-  mounted() {
-    this.countr = this.paises;
-    if (this.authenticated.estado === false) {
-      this.authenticated.popup = true;
-    }
   },
 };
 </script>

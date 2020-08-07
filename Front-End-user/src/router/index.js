@@ -12,10 +12,10 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Home.vue"),
   },
   {
-    path: "/CargardesdeAPI",
-    name: "CargardesdeAPI",
+    path: "/guardarstrapi",
+    name: "guardarstrapi",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/CargardesdeAPI.vue"),
+      import(/* webpackChunkName: "about" */ "../views/guardarStrapi.vue"),
   },
   {
     path: "/graficos",
@@ -23,12 +23,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/graficos.vue"),
   },
-  {
-    path: "/login",
-    name: "login",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/login.vue"),
-  },
+  
 ];
 
 const router = new VueRouter({

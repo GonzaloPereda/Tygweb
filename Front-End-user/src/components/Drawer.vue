@@ -4,12 +4,11 @@
       <v-toolbar color="teal">
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-toolbar-title> 
+        <v-toolbar-title>
           <h3>Pereda Gonzalo - Trabajo Practico n2</h3>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
-       
       </v-toolbar>
     </v-app-bar>
     <v-navigation-drawer
@@ -28,9 +27,6 @@
             ></v-img>
           </v-avatar>
         </v-flex>
-        <!-- <v-flex>
-          <p class="white--text mt-3 headline">TP Vue-TYGWeb-2020</p>
-        </v-flex> -->
 
         <v-divider></v-divider>
 
@@ -63,7 +59,7 @@ export default {
       {
         title: "CARGAR STRAPI",
         icon: "mdi-cloud-upload",
-        route: "CargardesdeAPI",
+        route: "guardarStrapi",
       },
       {
         title: "MOSTRAS GRAFICOS",
