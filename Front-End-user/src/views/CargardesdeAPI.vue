@@ -10,7 +10,8 @@
                 src="../assets/cerveza.jpg"
                 class="black--text align-end"
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                height="300px">
+                height="300px"
+              >
                 <!-- <v-card-title
                   ></v-card-title
                 > -->
@@ -30,12 +31,8 @@
                         single-line
                       ></v-select> -->
                     </v-col>
-                    
                     <v-col cols="12" md="12">
-                      <v-btn
-                        block
-                        color="blue"
-                        @click="setusuario()"
+                      <v-btn block color="blue" @click="setusuario()"
                         >Cargar datos en strapi
                         <v-icon right dark>mdi-cloud-upload</v-icon>
                       </v-btn>
@@ -70,58 +67,50 @@ export default {
   name: "CargarAPI",
   data() {
     return {
-      selected: "Argentina",
       snackbar: false,
       number: 0,
-      textSnackbar: "",
-      //paises: ["Iran", "Brazil", "France", "Spain"],
-      //  paises =
-      //           get( 
-      //             `http://localhost:1337/pais/count?pais=${data1.pais}`,
-      //                     {
-      //                       headers: {
-      //                         Authorization: `Bearer ${this.token1}`,
-      //                       },
-      //                     }
-                        
-      //                   ),
-     token: "",
-      info: {},
+      token: "",
       loading: true,
       errored: false,
-      resumen: {},
-      countries: {},
-      ultimo: 0,
-      
-      cerveza: {
-        nombre: "",
-        lema:"",
-        alcohol:"",
-        amargor:"",
-        
-
+      personajes: {
+        name: "",
+        occupation: "",
+        nickname: "",
+        edad: "",
+        status: "",
       },
-
-      totalcasosdeldia: 0,
-      diaanterior: 0,
-      casosdeldia1: 0,
-      dia: 0,
     };
   },
   computed: {
-    ...mapState(["token1", "authenticated","paises"]),
+    ...mapState(["token1", "authenticated"]),
   },
   methods: {
-...mapMutations(["mostrarLoading", "ocultarLoading","cargarpais"]),
-numberRandom: function () {
-      this.number = Math.floor(Math.random() * (25));
-      
+    ...mapMutations([
+      "mostrarLoading",
+      "ocultarLoading",
+      "asignartoken",
+      "authenticatedT",
+    ]),
+    numberRandom: function(n) {
+      this.number = Math.floor(Math.random() * n);
     },
-
-  async setusuario() {
-
-
-
+    async logstrapi() {
+      axios
+        .post("http://localhost:1337/auth/local", {
+          //.post("http://192.168.56.101:1337/auth/local", {
+          identifier: "api-user@example.com",
+          password: "123456",
+        })
+        .then((response) => {
+          this.token = response.data.jwt;
+          this.asignartoken(this.token);
+        });
+      this.$router.push(this.$route.query.redirect || "/");
+      this.authenticatedT();
+      this.authenticated.popup = false;
+    },
+    async setusuario() {
+      this.logstrapi();
       if (this.authenticated.estado === false) {
         this.authenticated.popup = true;
       } else {
@@ -130,94 +119,34 @@ numberRandom: function () {
             titulo: "Cargando los datos",
             color: "secondary",
           });
-    var tok = this.token1;
-        for (let i = 0; i < 11; i++){
-          this.numberRandom();
-          
-         await axios        
-            .get("https://api.punkapi.com/v2/beers")
-            .then((response) => {
-            //  console.log(response.data[0].name);
-            //  console.log(response.data[0].tagline);
-            //  console.log(response.data[0].abv);
-            //  console.log(response.data[0].ibu);
-
-             this.cerveza.nombre=response.data[this.number].name,
-             this.cerveza.lema=response.data[this.number].tagline,
-             this.cerveza.alcohol=response.data[this.number].abv,
-             this.cerveza.amargor=response.data[this.number].ibu
-
-             console.log(this.cerveza.nombre);
-             console.log(this.cerveza.lema);
-             console.log(this.cerveza.alcohol);
-             console.log(this.cerveza.amargor);
-            //  console.log(response.data.results[0].gender);
-            //  console.log(response.data.results[0].name.first);
-            //  console.log(response.data.results[0].name.last);
-            //  console.log(response.data.results[0].location.country);
-            //  console.log(response.data.results[0].dob.age);
-            //  console.log(response.data.results[0].email);
-            //   this.usuario.nombre=response.data.results[0].name.first,
-            //   this.usuario.apellido=response.data.results[0].name.last,
-            //   this.usuario.sexo=response.data.results[0].gender,
-            //   this.usuario.pais=response.data.results[0].location.country,
-            //   this.usuario.email=response.data.results[0].email,
-            //   this.usuario.edad=response.data.results[0].dob.age
-            });
-
-        
-      
-              let data = {
-            nombre: this.cerveza.nombre,
-            lema: this.cerveza.lema,
-            alcohol:  this.cerveza.alcohol,
-            amargor: this.cerveza.amargor,
-           
-          };
-          console.log(data)
-          await axios
-            .post("http://192.168.56.101:1337/Cervezas", data, {
+          var tok = this.token1;
+          for (let i = 0; i < 5; i++) {
+            this.numberRandom(99);
+            this.personajes.edad = this.number;
+            this.numberRandom(25);
+            await axios
+              .get("https://breakingbadapi.com/api/characters")
+              .then((response) => {
+                this.personajes.occupation =
+                  response.data[this.number].occupation[0];
+                this.personajes.nickname = response.data[this.number].nickname;
+                this.personajes.status = response.data[this.number].status;
+                this.personajes.name = response.data[this.number].name;
+              });
+            let data = {
+              name: this.personajes.name,
+              occupation: this.personajes.occupation,
+              ninckname: this.personajes.nickname,
+              edad: this.personajes.edad,
+              status: this.personajes.status,
+            };
+            console.log(data);
+            await axios.post("http://localhost:1337/personajes", data, {
               headers: {
                 Authorization: `Bearer ${tok}`,
               },
-            })
-
-        }
-//===================================
-            
-
-// let hay=
-// await axios.get( 
-//   `http://localhost:1337/pais/count?pais=${data1.pais}`,
-//           {
-//             headers: {
-//               Authorization: `Bearer ${this.token1}`,
-//             },
-//           }
-        
-//         );
-
-//   //alert(hay.data,data1.pais);     
-//  if (hay.data==0) { 
-//               await axios
-//             .post("http://localhost:1337/pais", data1, {
-//               headers: {
-//                 Authorization: `Bearer ${tok}`,
-//               },
-           
-//             })
-       
-//  this.cargarpais(this.usuario.pais);
-//      // alert(this.paises);
-//            }
-// //===================================
-          
-
-// //  this.paises.push(data1);
-// //  alert(this.paises),
-
- 
-
+            });
+          }
         } catch (error) {
           console.log(error);
         } finally {
@@ -228,13 +157,11 @@ numberRandom: function () {
         this.textSnackbar = "Ya esta actualizado";
         this.snackbar = true;
       }
-
     },
-
-    mostrarSnackbar(){
-       this.snackbar = true;
-          this.textSnackbar = "Los datos fueron actualizados";
-    }
+    mostrarSnackbar() {
+      this.snackbar = true;
+      this.textSnackbar = "Los datos fueron actualizados";
+    },
   },
   mounted() {
     if (this.authenticated.estado === false) {
