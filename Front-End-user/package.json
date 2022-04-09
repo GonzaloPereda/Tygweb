@@ -12,7 +12,7 @@
     "core-js": "^3.6.5",
     "devextreme": "20.1-stable",
     "devextreme-vue": "20.1-stable",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
